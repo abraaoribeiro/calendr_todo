@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:calendr_todo/app/app_widget.dart';
 import 'package:calendr_todo/app/modules/home/home_module.dart';
 
+import 'services/task_service.dart';
+
 class AppModule extends MainModule {
   @override
-  List<Bind> get binds => [];
+  List<Bind> get binds => [
+        Bind((i) => TaskService()),
+      ];
 
   @override
   List<ModularRouter> get routers => [

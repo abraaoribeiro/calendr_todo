@@ -27,6 +27,8 @@ dependencies:
   flutter_modular: ^2.0.0+1
   google_fonts: ^1.1.0
   flutter_svg: ^0.18.1
+  path_provider: ^1.5.1
+  sembast: ^2.4.7+6
   flutter:
     sdk: flutter
 
