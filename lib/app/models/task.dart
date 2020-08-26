@@ -19,6 +19,7 @@ class Task {
     this.color,
   });
 
+
   factory Task.fromJson(Map<String, dynamic> json) => Task(
       id: json["id"],
       title: json["title"],

@@ -1,3 +1,4 @@
+import 'modules/task_form/task_form_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
 import 'package:calendr_todo/app/app_widget.dart';
@@ -8,6 +9,7 @@ import 'services/task_service.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        $TaskFormController,
         Bind((i) => TaskService()),
       ];
 

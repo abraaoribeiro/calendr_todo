@@ -2,6 +2,7 @@ import 'package:calendr_todo/app/core/consts/colors_consts.dart';
 import 'package:calendr_todo/app/modules/components/task_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'home_controller.dart';
@@ -22,6 +23,19 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFFFFFFFF),
+        actions: [
+          Container(
+            width: 58,
+            child: Padding(
+              padding: const EdgeInsets.all(6.0),
+              child: CircleAvatar(
+                backgroundImage: NetworkImage(
+                    "https://4.bp.blogspot.com/-Jx21kNqFSTU/UXemtqPhZCI/AAAAAAAAh74/BMGSzpU6F48/s1600/funny-cat-pictures-047-001.jpg"),
+                backgroundColor: Colors.amberAccent,
+              ),
+            ),
+          ),
+        ],
         title: Padding(
           padding: const EdgeInsets.only(
               bottom: 0.0, left: 5.0, right: 0.0, top: 10.0),
@@ -48,37 +62,29 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         ),
       ),
       body: Column(
-        children: <Widget>[TaskCard()],
+        children: <Widget>[
+          TaskCard(),
+          TaskCard(),
+        ],
       ),
-      bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+      floatingActionButton: FloatingActionButton(
+        child: IconButton(
+          icon: SvgPicture.asset("assets/icons/add.svg"),
+          onPressed: () {
+           Navigator.pushNamed(context, '/edit');
+          },
         ),
-        child: BottomAppBar(
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Ink(
-                decoration: const ShapeDecoration(
-                  color: Colors.white,
-                  shape: CircleBorder(),
-                ),
-                child: IconButton(
-                  iconSize: 30,
-                  icon: Icon(
-                    Icons.add,
-                    color: ColorsConst.secudaryColor,
-                  ),
-                  onPressed: () {},
-                ),
-              ),
-            ],
-          ),
+        backgroundColor: Colors.white,
+        onPressed: () {},
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        child: Container(
           color: ColorsConst.tertiaryColor,
+          height: 60,
         ),
       ),
     );
   }
 }
-

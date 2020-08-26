@@ -1,10 +1,15 @@
 import 'package:calendr_todo/app/core/consts/colors_consts.dart';
 import 'package:calendr_todo/app/core/consts/consts.dart';
+import 'package:calendr_todo/app/models/task.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TaskCard extends StatelessWidget {
+  final Task task;
+
+  TaskCard({Key key, this.task}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -59,7 +64,7 @@ class TaskCard extends StatelessWidget {
                         "09:00 - 11:00",
                         style: GoogleFonts.josefinSans(
                             fontWeight: FontWeight.w400,
-                            color: ColorsConst.textColor,
+                            color: ColorsConst.textOpacityColor,
                             fontSize: 18.0),
                       ),
                     ),
@@ -77,7 +82,7 @@ class TaskCard extends StatelessWidget {
                 "Marketting meeting with maria",
                 style: GoogleFonts.josefinSans(
                     fontWeight: FontWeight.w400,
-                    color: ColorsConst.textColor,
+                    color: ColorsConst.textOpacityColor,
                     fontSize: 18.0),
                 textAlign: TextAlign.left,
               ),

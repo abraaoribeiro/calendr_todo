@@ -11,10 +11,10 @@ class AppWidget extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-         appBarTheme: AppBarTheme.of(context).copyWith(
+        appBarTheme: AppBarTheme.of(context).copyWith(
           elevation: 0,
           brightness: Brightness.dark,
-         ),
+        ),
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
