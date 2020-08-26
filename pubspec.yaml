@@ -29,6 +29,7 @@ dependencies:
   flutter_svg: ^0.18.1
   path_provider: ^1.5.1
   sembast: ^2.4.7+6
+  flutter_colorpicker: ^0.3.4
   flutter:
     sdk: flutter
 

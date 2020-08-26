@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 class InputDate extends StatelessWidget {
   final String hintText;
-
   const InputDate({Key key, this.hintText}) : super(key: key);
 
   @override
@@ -29,3 +28,4 @@ class InputDate extends StatelessWidget {
     );
   }
 }
+

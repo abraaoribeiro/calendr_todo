@@ -8,7 +8,8 @@ class InputIcon extends StatelessWidget {
   final String icon;
   final String text;
   final double fontSize;
-  const InputIcon({Key key, this.icon, this.text, this.fontSize})
+  final Function funcion;
+  const InputIcon({Key key, this.icon, this.text, this.fontSize, this.funcion})
       : super(key: key);
 
   @override
@@ -31,6 +32,7 @@ class InputIcon extends StatelessWidget {
             height: 40,
           ),
         ),
+        onTap: funcion,
       ),
     );
   }

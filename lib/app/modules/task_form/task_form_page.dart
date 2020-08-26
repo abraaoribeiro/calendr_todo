@@ -3,6 +3,7 @@ import 'package:calendr_todo/app/modules/task_form/components/input_date.dart';
 import 'package:calendr_todo/app/modules/task_form/components/input_icon.dart';
 import 'package:calendr_todo/app/modules/task_form/components/input_switch.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -20,6 +21,12 @@ class _TaskFormPageState
     extends ModularState<TaskFormPage, TaskFormController> {
   //use 'controller' variable to access controller
   final _formKey = new GlobalKey<FormState>();
+  Color currentColor = Colors.limeAccent;
+  List<Color> currentColors = [Colors.limeAccent, Colors.green];
+  void changeColor(Color color) => setState(() => currentColor = color);
+  void changeColors(List<Color> colors) =>
+      setState(() => currentColors = colors);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,6 +90,7 @@ class _TaskFormPageState
                 fontSize: 24,
                 icon: "refresh",
               ),
+              _showInputColor(),
               InputIcon(
                 text: "Add Note",
                 fontSize: 24,
@@ -92,6 +100,64 @@ class _TaskFormPageState
             ],
           ),
         ));
+  }
+
+  Widget _showInputColor() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      child: InkWell(
+        child: Row(
+          children: [
+            CircleAvatar(
+              backgroundColor: currentColor,
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              child: Text(
+                "Change color",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                  color: ColorsConst.grey400,
+                ),
+              ),
+            ),
+          ],
+        ),
+        onTap: () => showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(
+                'Select a color',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              content: SingleChildScrollView(
+                child: BlockPicker(
+                  pickerColor: currentColor,
+                  onColorChanged: changeColor,
+                ),
+              ),
+              actions: [
+                FlatButton(
+                  onPressed: () => Navigator.pop(context, true),
+                  child: Text(
+                    'Yes',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
+      ),
+    );
   }
 
   Widget _showInputDateTime() {
