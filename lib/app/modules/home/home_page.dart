@@ -1,9 +1,9 @@
 import 'package:calendr_todo/app/core/consts/colors_consts.dart';
-import 'package:calendr_todo/app/modules/components/task_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'components/task_card.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -58,7 +58,6 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                   fontSize: 16.0,
                 ),
               ),
-
             ],
           ),
         ),
@@ -81,11 +80,17 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         onPressed: () {},
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        child: Container(
-          color: ColorsConst.tertiaryColor,
-          height: 60,
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(14),
+          topLeft: Radius.circular(14),
+        ),
+        child: BottomAppBar(
+          shape: CircularNotchedRectangle(),
+          child: Container(
+            color: ColorsConst.tertiaryColor,
+            height: 60,
+          ),
         ),
       ),
     );

@@ -1,10 +1,11 @@
 import 'package:calendr_todo/app/core/consts/colors_consts.dart';
-import 'package:calendr_todo/app/modules/components/input_date.dart';
-import 'package:calendr_todo/app/modules/components/input_icon.dart';
+import 'package:calendr_todo/app/modules/task_form/components/input_date.dart';
+import 'package:calendr_todo/app/modules/task_form/components/input_icon.dart';
+import 'package:calendr_todo/app/modules/task_form/components/input_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'task_form_controller.dart';
 
 class TaskFormPage extends StatefulWidget {
@@ -56,6 +57,43 @@ class _TaskFormPageState
     );
   }
 
+  Widget _showForm() {
+    return new Container(
+        padding: EdgeInsets.all(16.0),
+        child: new Form(
+          key: _formKey,
+          child: new ListView(
+            shrinkWrap: true,
+            children: <Widget>[
+              _showInputTitle(),
+              InputSwitch(),
+              _showInputDateTime(),
+              InputIcon(
+                text: "Location",
+                fontSize: 24,
+                icon: "pin",
+              ),
+              InputIcon(
+                text: "Add People",
+                fontSize: 24,
+                icon: "user",
+              ),
+              InputIcon(
+                text: "Repeat",
+                fontSize: 24,
+                icon: "refresh",
+              ),
+              InputIcon(
+                text: "Add Note",
+                fontSize: 24,
+                icon: "note",
+              ),
+              _showSecondaryButton(),
+            ],
+          ),
+        ));
+  }
+
   Widget _showInputDateTime() {
     return Column(
       children: [
@@ -87,43 +125,6 @@ class _TaskFormPageState
     );
   }
 
-  Widget _showInputAllDay() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-      child: Row(
-        children: <Widget>[
-          SvgPicture.asset(
-            "assets/icons/clock.svg",
-            height: 40,
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: new Text(
-                'All Day',
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  color: ColorsConst.textColor,
-                  fontSize: 30.0,
-                ),
-              ),
-            ),
-          ),
-          Switch(
-            value: false,
-            onChanged: (bool value) {
-              this.setState(() {
-                value = true;
-              });
-            },
-            activeTrackColor: ColorsConst.secudaryColor,
-            activeColor: ColorsConst.secudaryColor,
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _showInputTitle() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -143,43 +144,6 @@ class _TaskFormPageState
     );
   }
 
-  Widget _showForm() {
-    return new Container(
-        padding: EdgeInsets.all(16.0),
-        child: new Form(
-          key: _formKey,
-          child: new ListView(
-            shrinkWrap: true,
-            children: <Widget>[
-              _showInputTitle(),
-              _showInputAllDay(),
-              _showInputDateTime(),
-              InputIcon(
-                text: "Location",
-                fontSize: 24,
-                icon: "pin",
-              ),
-              InputIcon(
-                text: "Add People",
-                fontSize: 24,
-                icon: "user",
-              ),
-              InputIcon(
-                text: "Repeat",
-                fontSize: 24,
-                icon: "refresh",
-              ),
-              InputIcon(
-                text: "Add Note",
-                fontSize: 24,
-                icon: "note",
-              ),
-              _showSecondaryButton(),
-            ],
-          ),
-        ));
-  }
-
   Widget _showSecondaryButton() {
     return Padding(
       padding: EdgeInsets.fromLTRB(0.0, 45.0, 0.0, 0.0),
@@ -190,7 +154,7 @@ class _TaskFormPageState
           children: [
             SizedBox(
               height: 50.0,
-              width: 250,
+              width: 350,
               child: new RaisedButton(
                 color: ColorsConst.primaryColor,
                 elevation: 3.0,
