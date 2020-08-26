@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppWidget extends StatelessWidget {
   @override
@@ -9,6 +10,7 @@ class AppWidget extends StatelessWidget {
       title: 'Flutter Slidy',
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
+        fontFamily: GoogleFonts.josefinSans().fontFamily,
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         appBarTheme: AppBarTheme.of(context).copyWith(

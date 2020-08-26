@@ -1,3 +1,5 @@
+import 'package:calendr_todo/app/modules/task_form/task_form_module.dart';
+
 import 'modules/task_form/task_form_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,7 @@ class AppModule extends MainModule {
   @override
   List<ModularRouter> get routers => [
         ModularRouter(Modular.initialRoute, module: HomeModule()),
+        ModularRouter("/edit", module: TaskFormModule())
       ];
 
   @override

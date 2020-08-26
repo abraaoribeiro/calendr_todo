@@ -6,7 +6,9 @@ class TaskFormModule extends ChildModule {
   List<Bind> get binds => [];
 
   @override
-  List<ModularRouter> get routers => [];
+  List<ModularRouter> get routers => [
+    ModularRouter("/task", child: (_, args) => TaskFormPage()),
+  ];
 
   static Inject get to => Inject<TaskFormModule>.of();
 }

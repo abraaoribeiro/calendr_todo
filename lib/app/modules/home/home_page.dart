@@ -3,7 +3,6 @@ import 'package:calendr_todo/app/modules/components/task_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'home_controller.dart';
 
@@ -45,18 +44,21 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             children: [
               Text(
                 widget.title,
-                style: GoogleFonts.josefinSans(
-                    fontWeight: FontWeight.w700,
-                    color: ColorsConst.textColor,
-                    fontSize: 26.0),
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  color: ColorsConst.textColor,
+                  fontSize: 26.0,
+                ),
               ),
               Text(
                 "Friday, 2 August",
-                style: GoogleFonts.josefinSans(
-                    fontWeight: FontWeight.w700,
-                    color: ColorsConst.grey400,
-                    fontSize: 16.0),
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  color: ColorsConst.grey400,
+                  fontSize: 16.0,
+                ),
               ),
+
             ],
           ),
         ),
@@ -68,10 +70,11 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: "btn1",
         child: IconButton(
           icon: SvgPicture.asset("assets/icons/add.svg"),
           onPressed: () {
-           Navigator.pushNamed(context, '/edit');
+            Modular.to.popAndPushNamed('/edit');
           },
         ),
         backgroundColor: Colors.white,
