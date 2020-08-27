@@ -31,6 +31,9 @@ dependencies:
   sembast: ^2.4.7+6
   flutter_colorpicker: ^0.3.4
   flutter_rounded_date_picker: ^1.0.4
+  contacts_service: ^0.4.6
+  permission_handler: ^5.0.1+1
+  modal_bottom_sheet: ^0.2.0+1
   flutter_localizations:
     sdk: flutter
   flutter:
