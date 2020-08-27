@@ -6,6 +6,8 @@ class Task {
   String note;
   DateTime startDateTime;
   DateTime endDateTime;
+  TimeOfDay startTime;
+  TimeOfDay endTime;
   String location;
   ColorSwatch color;
 
@@ -15,10 +17,11 @@ class Task {
     this.note,
     this.startDateTime,
     this.endDateTime,
+    this.startTime,
+    this.endTime,
     this.location,
     this.color,
   });
-
 
   factory Task.fromJson(Map<String, dynamic> json) => Task(
       id: json["id"],
@@ -27,7 +30,9 @@ class Task {
       startDateTime: json["startDate"],
       endDateTime: json["endDateTime"],
       location: json["location"],
-      color: json["color"]);
+      color: json["color"],
+      startTime: json["startTime"],
+      endTime: json["endTime"]);
 
   Map<String, dynamic> toJson() => {
         "id": id,
@@ -35,6 +40,8 @@ class Task {
         "note": note,
         "startDateTime": startDateTime,
         "endDateTime": endDateTime,
+        "startTime": startTime,
+        "endTime": endTime,
         "location": location,
         "color": color
       };

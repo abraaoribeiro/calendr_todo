@@ -1,31 +1,31 @@
-
 import 'package:calendr_todo/app/core/consts/colors_consts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class InputDate extends StatelessWidget {
-  final String hintText;
-  const InputDate({Key key, this.hintText}) : super(key: key);
+  final String text;
+  final Function function;
+  final Color colorText;
+  const InputDate({Key key, this.text, this.function, this.colorText}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return new Flexible(
-      child: new TextField(
-        textAlign: TextAlign.end,
-        decoration: InputDecoration(
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-          border: InputBorder.none,
-          hintText: hintText,
-          alignLabelWithHint: true,
-          hintStyle: TextStyle(
-            fontWeight: FontWeight.w700,
-            color: ColorsConst.grey400,
-            fontSize: 24,
+      child: InkWell(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          child: new Text(
+            text,
+            textAlign: TextAlign.end,
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              color: colorText,
+              fontSize: 24,
+            ),
           ),
         ),
+        onTap: function,
       ),
     );
   }
 }
-

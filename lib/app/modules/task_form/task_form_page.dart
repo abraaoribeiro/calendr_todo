@@ -5,7 +5,9 @@ import 'package:calendr_todo/app/modules/task_form/components/input_switch.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_rounded_date_picker/rounded_picker.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 
 import 'task_form_controller.dart';
 
@@ -30,7 +32,7 @@ class _TaskFormPageState
   @override
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
-
+    DateTime dateTime;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
@@ -61,7 +63,7 @@ class _TaskFormPageState
       body: SingleChildScrollView(
         reverse: true,
         child: Padding(
-         padding: EdgeInsets.only(bottom: bottom),
+          padding: EdgeInsets.only(bottom: bottom),
           child: Container(
             child: _showForm(),
           ),
@@ -165,6 +167,7 @@ class _TaskFormPageState
       ),
     );
   }
+// TODO deixar generico a chamada do showRoundedDatePicker e showRoundedTimePicker
 
   Widget _showInputDateTime() {
     return Column(
@@ -174,10 +177,49 @@ class _TaskFormPageState
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               InputDate(
-                hintText: "Date Start",
+                function: () async {
+                  DateTime newDateTime = await showRoundedDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(DateTime.now().year - 1),
+                    lastDate: DateTime(DateTime.now().year + 1),
+                    borderRadius: 16,
+                    theme: ThemeData(primarySwatch: Colors.purple),
+                  );
+                  if (newDateTime != null &&
+                      newDateTime != controller.task.startDateTime) {
+                    setState(() {
+                      controller.task.startDateTime = newDateTime;
+                    });
+                  }
+                },
+                text: controller.task.startDateTime == null
+                    ? "Date Start"
+                    : "${DateFormat.yMMMd().format(controller.task.startDateTime)}",
+                colorText: controller.task.startDateTime == null
+                    ? ColorsConst.grey400
+                    : ColorsConst.textColor,
               ),
               InputDate(
-                hintText: "Time Start",
+                function: () async {
+                  final timePicked = await showRoundedTimePicker(
+                    context: context,
+                    initialTime: TimeOfDay.now(),
+                    theme: ThemeData(primarySwatch: Colors.purple),
+                  );
+                  if (timePicked != null &&
+                      timePicked != controller.task.startTime) {
+                    setState(() {
+                      controller.task.startTime = timePicked;
+                    });
+                  }
+                },
+                text: controller.task.startTime == null
+                    ? "Time Start"
+                    : "${controller.task.startTime.format(context)}",
+                colorText: controller.task.startTime == null
+                    ? ColorsConst.grey400
+                    : ColorsConst.textColor,
               ),
             ],
           ),
@@ -186,10 +228,49 @@ class _TaskFormPageState
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             InputDate(
-              hintText: "Date End",
+              function: () async {
+                DateTime newDateTime = await showRoundedDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(DateTime.now().year - 1),
+                  lastDate: DateTime(DateTime.now().year + 1),
+                  borderRadius: 16,
+                  theme: ThemeData(primarySwatch: Colors.purple),
+                );
+                if (newDateTime != null &&
+                    newDateTime != controller.task.endDateTime) {
+                  setState(() {
+                    controller.task.endDateTime = newDateTime;
+                  });
+                }
+              },
+              text: controller.task.endDateTime == null
+                  ? "Date End"
+                  : "${DateFormat.yMMMd().format(controller.task.endDateTime)}",
+              colorText: controller.task.endDateTime == null
+                  ? ColorsConst.grey400
+                  : ColorsConst.textColor,
             ),
             InputDate(
-              hintText: "Time End",
+              function: () async {
+                final timePicked = await showRoundedTimePicker(
+                  context: context,
+                  initialTime: TimeOfDay.now(),
+                  theme: ThemeData(primarySwatch: Colors.purple),
+                );
+                if (timePicked != null &&
+                    timePicked != controller.task.endTime) {
+                  setState(() {
+                    controller.task.endTime = timePicked;
+                  });
+                }
+              },
+              text: controller.task.endTime == null
+                  ? "Time End"
+                  : "${controller.task.endTime.format(context)}",
+              colorText: controller.task.endTime == null
+                  ? ColorsConst.grey400
+                  : ColorsConst.textColor,
             ),
           ],
         ),

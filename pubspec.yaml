@@ -30,6 +30,9 @@ dependencies:
   path_provider: ^1.5.1
   sembast: ^2.4.7+6
   flutter_colorpicker: ^0.3.4
+  flutter_rounded_date_picker: ^1.0.4
+  flutter_localizations:
+    sdk: flutter
   flutter:
     sdk: flutter
 
