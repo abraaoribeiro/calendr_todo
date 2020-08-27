@@ -29,6 +29,8 @@ class _TaskFormPageState
 
   @override
   Widget build(BuildContext context) {
+    final bottom = MediaQuery.of(context).viewInsets.bottom;
+
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
@@ -57,8 +59,12 @@ class _TaskFormPageState
         ),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          child: _showForm(),
+        reverse: true,
+        child: Padding(
+         padding: EdgeInsets.only(bottom: bottom),
+          child: Container(
+            child: _showForm(),
+          ),
         ),
       ),
     );
