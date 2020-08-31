@@ -34,10 +34,26 @@ mixin _$TaskFormController on _TaskFormControllerBase, Store {
     });
   }
 
+  final _$contactsAtom = Atom(name: '_TaskFormControllerBase.contacts');
+
+  @override
+  Iterable<Contact> get contacts {
+    _$contactsAtom.reportRead();
+    return super.contacts;
+  }
+
+  @override
+  set contacts(Iterable<Contact> value) {
+    _$contactsAtom.reportWrite(value, super.contacts, () {
+      super.contacts = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
-task: ${task}
+task: ${task},
+contacts: ${contacts}
     ''';
   }
 }

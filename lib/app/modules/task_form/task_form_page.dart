@@ -3,7 +3,6 @@ import 'package:calendr_todo/app/modules/contact_list/contact_list.dart';
 import 'package:calendr_todo/app/modules/task_form/components/input_date.dart';
 import 'package:calendr_todo/app/modules/task_form/components/input_icon.dart';
 import 'package:calendr_todo/app/modules/task_form/components/input_switch.dart';
-import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -11,7 +10,6 @@ import 'package:flutter_rounded_date_picker/rounded_picker.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 import 'task_form_controller.dart';
 

@@ -1,3 +1,4 @@
+import 'services/permission_service.dart';
 import 'package:calendr_todo/app/modules/task_form/task_form_module.dart';
 
 import 'modules/task_form/task_form_controller.dart';
@@ -11,6 +12,7 @@ import 'services/task_service.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        $PermissionService,
         $TaskFormController,
         Bind((i) => TaskService()),
       ];
