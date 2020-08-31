@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:calendr_todo/app/core/consts/colors_consts.dart';
 import 'package:calendr_todo/app/modules/contact_list/contact_list.dart';
 import 'package:calendr_todo/app/modules/task_form/components/input_date.dart';
@@ -15,7 +17,9 @@ import 'task_form_controller.dart';
 
 class TaskFormPage extends StatefulWidget {
   final String title;
-  const TaskFormPage({Key key, this.title = "TaskForm"}) : super(key: key);
+  final String contactName;
+  final Uint8List contactAvatar;
+  const TaskFormPage({Key key, this.title = "TaskForm", this.contactName, this.contactAvatar}) : super(key: key);
 
   @override
   _TaskFormPageState createState() => _TaskFormPageState();
@@ -25,11 +29,13 @@ class _TaskFormPageState
     extends ModularState<TaskFormPage, TaskFormController> {
   //use 'controller' variable to access controller
   final _formKey = new GlobalKey<FormState>();
+  
   Color currentColor = Colors.limeAccent;
+
   List<Color> currentColors = [Colors.limeAccent, Colors.green];
+  
   void changeColor(Color color) => setState(() => currentColor = color);
-  void changeColors(List<Color> colors) =>
-      setState(() => currentColors = colors);
+  void changeColors(List<Color> colors) => setState(() => currentColors = colors);
 
   @override
   Widget build(BuildContext context) {
@@ -91,9 +97,9 @@ class _TaskFormPageState
                 icon: "pin",
               ),
               InputIcon(
-                text: "Add People",
+                text: widget.contactName == null ? "Add People" : widget.contactName,       
                 fontSize: 24,
-                icon: "user",
+                icon: widget.contactAvatar == null ? "user" : widget.contactAvatar,
                 funcion: () => showMaterialModalBottomSheet(
                   context: context,
                   builder: (context, scrollController) => ContactListPage(),
@@ -115,6 +121,7 @@ class _TaskFormPageState
           ),
         ));
   }
+
 
   Widget _showInputColor() {
     return Padding(

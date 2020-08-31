@@ -1,4 +1,3 @@
-
 import 'package:calendr_todo/app/core/consts/colors_consts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,6 @@ class InputIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       child: TextFormField(
@@ -25,7 +23,7 @@ class InputIcon extends StatelessWidget {
           alignLabelWithHint: true,
           hintStyle: TextStyle(
             fontWeight: FontWeight.w700,
-            color: ColorsConst.grey400,
+            color: text == null ? ColorsConst.grey400 : ColorsConst.textColor,
             fontSize: fontSize,
           ),
           icon: SvgPicture.asset(

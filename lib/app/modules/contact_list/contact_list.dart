@@ -1,4 +1,5 @@
 import 'package:calendr_todo/app/core/consts/colors_consts.dart';
+import 'package:calendr_todo/app/modules/task_form/task_form_page.dart';
 import 'package:calendr_todo/app/services/permission_service.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -56,7 +57,15 @@ class _ContactListPageState extends State<ContactListPage> {
                   itemBuilder: (BuildContext context, int index) {
                     Contact c = _contacts?.elementAt(index);
                     return ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                TaskFormPage(contactName: c.displayName),
+                          ),
+                        );
+                      },
                       leading: (c.avatar != null && c.avatar.length > 0)
                           ? CircleAvatar(backgroundImage: MemoryImage(c.avatar))
                           : CircleAvatar(
