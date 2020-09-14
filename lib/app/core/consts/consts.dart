@@ -8,3 +8,5 @@ const defaultShadow = BoxShadow(
   blurRadius: 27,
   color: Colors.black12, 
 );
+
+const apiKeyMapBox = "";

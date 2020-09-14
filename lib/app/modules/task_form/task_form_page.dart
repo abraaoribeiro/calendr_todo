@@ -1,7 +1,8 @@
 import 'dart:typed_data';
 
+import 'package:calendr_todo/app/components/contact/contact_list.dart';
+import 'package:calendr_todo/app/components/map/map.dart';
 import 'package:calendr_todo/app/core/consts/colors_consts.dart';
-import 'package:calendr_todo/app/modules/contact_list/contact_list.dart';
 import 'package:calendr_todo/app/modules/task_form/components/input_date.dart';
 import 'package:calendr_todo/app/modules/task_form/components/input_icon.dart';
 import 'package:calendr_todo/app/modules/task_form/components/input_switch.dart';
@@ -95,6 +96,10 @@ class _TaskFormPageState
                 text: "Location",
                 fontSize: 24,
                 icon: "pin",
+                funcion: () =>showMaterialModalBottomSheet(
+                  context: context,
+                  builder: (context, scrollController) => Maps(),
+                ),
               ),
               InputIcon(
                 text: widget.contactName == null ? "Add People" : widget.contactName,       
