@@ -53,7 +53,7 @@ class _MapsState extends State<Maps> {
           layers: [
             new TileLayerOptions(
               urlTemplate:
-                  "https://api.mapbox.com/styles/v1/abraaoribeiro/ckf17dtht0jds19rd5rvq0ug2/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYWJyYWFvcmliZWlybyIsImEiOiJja2N1eXc3cDMyZDh0MndsYjFzZ3RnZng3In0.CgbvvglsHPHkEN6-Mp6Pqw",
+                  "https://api.mapbox.com/styles/v1/abraaoribeiro/ckf17dtht0jds19rd5rvq0ug2/tiles/256/{z}/{x}/{y}@2x?access_token=$apiKeyMapBox",
               additionalOptions: {
                 'accessToken': apiKeyMapBox,
                 'id': 'mapbox.streets'
